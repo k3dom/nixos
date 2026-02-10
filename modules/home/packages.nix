@@ -31,6 +31,7 @@
     kind
     kubectx
     python3
+    git-wt
     # desktop apps
     gtranslator
     pavucontrol
