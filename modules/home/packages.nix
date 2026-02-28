@@ -19,7 +19,7 @@
     imagemagick
     pnpm
     nodejs
-    mitmproxy
+    # mitmproxy
     tokei
     texliveFull
     postgresql
@@ -74,6 +74,6 @@
     obsidian.enable = true;
     vscode.enable = true;
     discord.enable = true;
-    calibre.enable = true;
+    # calibre.enable = true;
   };
 }
