@@ -46,6 +46,7 @@
     projectlibre
     meld
     drawing
+    opencode-desktop
     # gnome
     morewaita-icon-theme
     gnomeExtensions.paperwm
@@ -53,6 +54,7 @@
     # inputs
     inputs.nvim.packages.${system}.default
     inputs.llm-agents.packages.${system}.opencode
+    inputs.llm-agents.packages.${system}.ccusage-opencode
   ];
 
   # packages with home-manager modules
