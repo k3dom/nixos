@@ -188,11 +188,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1772978823,
-        "narHash": "sha256-13++ZJSQxFbO29NqkKN0swO1ziG7ukvL7ARrQAQgYgA=",
+        "lastModified": 1772979636,
+        "narHash": "sha256-YCwQWBHEKNkhkV1YlS8Eu0V73ZOUlgSakpB2+NK+lNs=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "eaef1094d92c579fbfc0ce204cc1fc09c41059cf",
+        "rev": "97c479a3476d1a1ebb278b86b883cf7715beeab0",
         "type": "github"
       },
       "original": {
@@ -269,11 +269,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1772941110,
-        "narHash": "sha256-krm7enK551PkiQ+JxZ0VnxPinbCa/UmoDuyvfJ6m8jc=",
+        "lastModified": 1772979220,
+        "narHash": "sha256-Vjc3FITbdFzjO5gAtkPpn4Tjw1GT+94nqzwac19mopc=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "3e4f40c169079e883af315f015715da8a5349043",
+        "rev": "67cac4a90be041eb4612b46ef5f489d70c15abc4",
         "type": "github"
       },
       "original": {
