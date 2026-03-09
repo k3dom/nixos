@@ -32,15 +32,15 @@
   } @ inputs: let
     system = "x86_64-linux";
     user = "kedom";
-    homeStateVersion = "24.11";
+    homeStateVersion = "26.05";
     hosts = [
       {
         hostName = "t480";
-        stateVersion = "24.11";
+        stateVersion = "26.05";
       }
       {
         hostName = "desktop";
-        stateVersion = "24.11";
+        stateVersion = "26.05";
       }
     ];
     mkHost = host: {

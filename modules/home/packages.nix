@@ -19,7 +19,7 @@
     imagemagick
     pnpm
     nodejs
-    # mitmproxy
+    mitmproxy
     tokei
     texliveFull
     postgresql
@@ -32,6 +32,7 @@
     kubectx
     python3
     git-wt
+    inputs.nvim.packages.${system}.default
     # desktop apps
     gtranslator
     pavucontrol
@@ -46,15 +47,10 @@
     projectlibre
     meld
     drawing
-    opencode-desktop
     # gnome
     morewaita-icon-theme
     gnomeExtensions.paperwm
     gnomeExtensions.tailscale-qs
-    # inputs
-    inputs.nvim.packages.${system}.default
-    inputs.llm-agents.packages.${system}.opencode
-    inputs.llm-agents.packages.${system}.ccusage-opencode
   ];
 
   # packages with home-manager modules
@@ -76,6 +72,6 @@
     obsidian.enable = true;
     vscode.enable = true;
     discord.enable = true;
-    # calibre.enable = true;
+    calibre.enable = true;
   };
 }
