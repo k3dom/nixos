@@ -4,6 +4,7 @@
     ./fonts.nix
     ./packages.nix
     ./opencode.nix
+    ./eza.nix
     ./fish.nix
     ./yazi.nix
     ./chromium.nix
