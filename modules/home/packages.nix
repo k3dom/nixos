@@ -61,7 +61,6 @@
     # packages
     fastfetch.enable = true;
     lazygit.enable = true;
-    eza.enable = true;
     fzf.enable = true;
     zoxide.enable = true;
     ripgrep.enable = true;
