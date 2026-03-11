@@ -47,6 +47,8 @@
     projectlibre
     meld
     drawing
+    zoom-us
+    teams-for-linux
     # gnome
     morewaita-icon-theme
     gnomeExtensions.paperwm
