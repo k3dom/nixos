@@ -19,6 +19,7 @@
     imagemagick
     pnpm
     nodejs
+    vite-plus
     mitmproxy
     tokei
     texliveFull

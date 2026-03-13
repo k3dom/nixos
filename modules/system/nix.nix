@@ -23,6 +23,7 @@
             src = "${inputs.tailscale-gnome-qs}/tailscale@joaophi.github.com";
           });
         };
+      vite-plus = final.callPackage ../../pkgs/vite-plus {};
     })
   ];
   home-manager = {
