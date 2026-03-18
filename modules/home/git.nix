@@ -1,4 +1,5 @@
 {
+  pkgs,
   user,
   hostName,
   ...
@@ -12,9 +13,14 @@
     then signKeys.${hostName}
     else throw "No SSH signing key for hostname: ${hostName}";
 in {
-  home.file.".ssh/allowed_signers".text = ''
-    * ${signKey}
-  '';
+  home = {
+    file.".ssh/allowed_signers".text = ''
+      * ${signKey}
+    '';
+    packages = with pkgs; [
+      git-wt
+    ];
+  };
   programs.git = {
     enable = true;
     lfs.enable = true;

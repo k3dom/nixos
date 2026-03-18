@@ -32,7 +32,6 @@
     kind
     kubectx
     python3
-    git-wt
     inputs.nvim.packages.${system}.default
     # desktop apps
     gtranslator

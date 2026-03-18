@@ -15,6 +15,38 @@
   nixpkgs.overlays = [
     inputs.llm-agents.overlays.default
     (final: prev: {
+      git-wt = prev.buildGoModule rec {
+        pname = "git-wt";
+        version = "0.25.0";
+
+        src = prev.fetchFromGitHub {
+          owner = "k1LoW";
+          repo = "git-wt";
+          tag = "v${version}";
+          hash = "sha256-QdyONDVokpOaH5dI5v1rmaymCgIiWZ16h26FAIsAHPc=";
+        };
+
+        vendorHash = "sha256-O4vqouNxvA3GvrnpRO6GXDD8ysPfFCaaSJVFj2ufxwI=";
+
+        nativeCheckInputs = [ prev.git ];
+
+        ldflags = [
+          "-s"
+          "-w"
+          "-X github.com/k1LoW/git-wt/version.Version=v${version}"
+        ];
+
+        meta = {
+          description = "Git subcommand that makes git worktree simple";
+          homepage = "https://github.com/k1LoW/git-wt";
+          changelog = "https://github.com/k1LoW/git-wt/releases/tag/v${version}";
+          license = prev.lib.licenses.mit;
+          maintainers = with prev.lib.maintainers; [ ryoppippi ];
+          mainProgram = "git-wt";
+        };
+      };
+    })
+    (final: prev: {
       gnomeExtensions =
         prev.gnomeExtensions
         // {
