@@ -22,8 +22,16 @@
     };
   };
   security.rtkit.enable = true;
-  virtualisation.docker = {
-    enable = true;
-    autoPrune.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
+    };
   };
+  programs.virt-manager.enable = true;
+  environment.systemPackages = with pkgs; [
+    qemu
+    dnsmasq
+  ];
 }
