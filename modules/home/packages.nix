@@ -19,7 +19,7 @@
     imagemagick
     pnpm
     nodejs
-    vite-plus
+    # vite-plus
     mitmproxy
     tokei
     texliveFull
@@ -49,6 +49,7 @@
     drawing
     zoom-us
     teams-for-linux
+    android-studio
     # gnome
     morewaita-icon-theme
     gnomeExtensions.paperwm
