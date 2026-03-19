@@ -50,7 +50,6 @@
     zoom-us
     teams-for-linux
     android-studio
-    androidenv.androidPkgs.platform-tools
     # gnome
     morewaita-icon-theme
     gnomeExtensions.paperwm
