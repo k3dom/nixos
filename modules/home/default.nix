@@ -3,7 +3,7 @@
     ./dconf.nix
     ./fonts.nix
     ./packages.nix
-    ./opencode.nix
+    ./agents.nix
     ./eza.nix
     ./fish.nix
     ./yazi.nix
