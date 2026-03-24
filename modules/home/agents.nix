@@ -14,6 +14,7 @@
   };
   home.packages = with pkgs; [
     opencode-desktop
+    llm-agents.ccusage
     llm-agents.ccusage-opencode
   ];
 }

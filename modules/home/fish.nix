@@ -21,6 +21,7 @@
         abbr -a kn  "kubens"
         abbr -a kc  "kubectx"
         abbr -a oc  "opencode"
+        abbr -a cc  "claude"
         abbr -a g   "git"
         abbr -a gwt "git-wt-fzf"
       '';

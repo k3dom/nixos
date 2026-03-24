@@ -20,7 +20,7 @@
     pnpm
     nodejs
     # vite-plus
-    mitmproxy
+    # mitmproxy
     tokei
     texliveFull
     postgresql
