@@ -28,7 +28,7 @@
 
         vendorHash = "sha256-O4vqouNxvA3GvrnpRO6GXDD8ysPfFCaaSJVFj2ufxwI=";
 
-        nativeCheckInputs = [ prev.git ];
+        nativeCheckInputs = [prev.git];
 
         ldflags = [
           "-s"
@@ -41,7 +41,7 @@
           homepage = "https://github.com/k1LoW/git-wt";
           changelog = "https://github.com/k1LoW/git-wt/releases/tag/v${version}";
           license = prev.lib.licenses.mit;
-          maintainers = with prev.lib.maintainers; [ ryoppippi ];
+          maintainers = with prev.lib.maintainers; [ryoppippi];
           mainProgram = "git-wt";
         };
       };
@@ -55,7 +55,6 @@
             src = "${inputs.tailscale-gnome-qs}/tailscale@joaophi.github.com";
           });
         };
-      vite-plus = final.callPackage ../../pkgs/vite-plus {};
     })
   ];
   home-manager = {

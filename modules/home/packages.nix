@@ -4,8 +4,9 @@
   system,
   ...
 }: {
+  # Packages without a home-manager module
   home.packages = with pkgs; [
-    # packages
+    # General packages
     hunspell
     hunspellDicts.en_US
     hunspellDicts.de_DE
@@ -19,8 +20,7 @@
     imagemagick
     pnpm
     nodejs
-    # vite-plus
-    # mitmproxy
+    mitmproxy
     tokei
     texliveFull
     postgresql
@@ -32,8 +32,11 @@
     kind
     kubectx
     python3
+    morewaita-icon-theme
+    gnomeExtensions.paperwm
+    gnomeExtensions.tailscale-qs
     inputs.nvim.packages.${system}.default
-    # desktop apps
+    # Desktop applications
     gtranslator
     pavucontrol
     bitwarden-desktop
@@ -44,22 +47,16 @@
     libreoffice-fresh
     darktable
     yaak
-    projectlibre
     meld
     drawing
     zoom-us
     teams-for-linux
     android-studio
-    # gnome
-    morewaita-icon-theme
-    gnomeExtensions.paperwm
-    gnomeExtensions.tailscale-qs
   ];
-
-  # packages with home-manager modules
+  # Packages with home-manager modules
   programs = {
+    # General packages
     home-manager.enable = true;
-    # packages
     fastfetch.enable = true;
     lazygit.enable = true;
     fzf.enable = true;
@@ -69,7 +66,7 @@
     gh.enable = true;
     jq.enable = true;
     k9s.enable = true;
-    # desktop apps
+    # Desktop applications
     firefox.enable = true;
     obsidian.enable = true;
     vscode.enable = true;

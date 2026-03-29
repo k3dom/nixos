@@ -35,7 +35,6 @@ in {
         gitDir = "/home/${user}/Public/Git/";
       in [
         (gitDir + "progono/mono")
-        (gitDir + "progono/server")
         (gitDir + "nvim")
         (gitDir + "nixbox")
       ];
