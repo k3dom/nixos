@@ -19,10 +19,6 @@
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tailscale-gnome-qs = {
-      url = "github:aoiwelle/tailscale-gnome-qs/fix-gnome-49";
-      flake = false;
-    };
   };
   outputs = {
     nixpkgs,

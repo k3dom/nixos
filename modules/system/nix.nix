@@ -45,15 +45,50 @@
           mainProgram = "git-wt";
         };
       };
-    })
-    (final: prev: {
+
       gnomeExtensions =
         prev.gnomeExtensions
         // {
-          tailscale-qs = prev.gnomeExtensions.tailscale-qs.overrideAttrs (oldAttrs: {
-            version = "49-unstable";
-            src = "${inputs.tailscale-gnome-qs}/tailscale@joaophi.github.com";
-          });
+          tailscale-qs = prev.stdenv.mkDerivation {
+            pname = "gnome-shell-extension-tailscale-qs";
+            version = "5";
+
+            src = prev.fetchFromGitHub {
+              owner = "tailscale-qs";
+              repo = "tailscale-gnome-qs";
+              rev = "2de39e9184725944c3bf9edafd28637c669303b5";
+              hash = "sha256-NIcbBEIilQX8vvsi+0VDIzq3QGgTYJEHyMyupN9PdNY=";
+            };
+
+            nativeBuildInputs = [prev.glib];
+
+            buildPhase = ''
+              runHook preBuild
+              if [ -d tailscale-gnome-qs@tailscale-qs.github.io/schemas ]; then
+                glib-compile-schemas --strict tailscale-gnome-qs@tailscale-qs.github.io/schemas
+              fi
+              runHook postBuild
+            '';
+
+            installPhase = ''
+              runHook preInstall
+              mkdir -p $out/share/gnome-shell/extensions/
+              cp -r tailscale-gnome-qs@tailscale-qs.github.io \
+                $out/share/gnome-shell/extensions/tailscale-gnome-qs@tailscale-qs.github.io
+              runHook postInstall
+            '';
+
+            passthru = {
+              extensionUuid = "tailscale-gnome-qs@tailscale-qs.github.io";
+              extensionPortalSlug = "tailscale-qs";
+            };
+
+            meta = {
+              description = "Add Tailscale to GNOME quick settings";
+              homepage = "https://github.com/tailscale-qs/tailscale-gnome-qs";
+              license = prev.lib.licenses.gpl3Plus;
+            };
+          };
         };
     })
   ];
