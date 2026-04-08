@@ -7,10 +7,46 @@
   hostName,
   ...
 }: {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+  home-manager = {
+    users.${user} = import ./home.nix;
+    backupFileExtension = "backup";
+    useGlobalPkgs = true;
+    extraSpecialArgs = {
+      inherit
+        inputs
+        system
+        homeStateVersion
+        user
+        hostName
+        ;
+    };
+  };
+  programs = {
+    nh = {
+      enable = true;
+      flake = "/home/${user}/nixos";
+    };
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc
+      ];
+    };
+  };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     inputs.llm-agents.overlays.default
@@ -92,34 +128,4 @@
         };
     })
   ];
-  home-manager = {
-    users.${user} = import ./home.nix;
-    backupFileExtension = "backup";
-    useGlobalPkgs = true;
-    extraSpecialArgs = {
-      inherit
-        inputs
-        system
-        homeStateVersion
-        user
-        hostName
-        ;
-    };
-  };
-  programs = {
-    nh = {
-      enable = true;
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 15d --keep 3";
-      };
-      flake = "/home/${user}/nixos";
-    };
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-        stdenv.cc.cc
-      ];
-    };
-  };
 }
