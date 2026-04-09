@@ -53,16 +53,16 @@
     (final: prev: {
       git-wt = prev.buildGoModule rec {
         pname = "git-wt";
-        version = "0.25.0";
+        version = "0.26.2";
 
         src = prev.fetchFromGitHub {
           owner = "k1LoW";
           repo = "git-wt";
           tag = "v${version}";
-          hash = "sha256-QdyONDVokpOaH5dI5v1rmaymCgIiWZ16h26FAIsAHPc=";
+          hash = "sha256-zAQxo9rgNq9L+NOMx4xS+h0oBGukZqfRg0Y3OYdelA0=";
         };
 
-        vendorHash = "sha256-O4vqouNxvA3GvrnpRO6GXDD8ysPfFCaaSJVFj2ufxwI=";
+        vendorHash = "sha256-stE3S6+ogv0bei6+eiyrR/fHMu+jizSEuL1NGakPszU=";
 
         nativeCheckInputs = [prev.git];
 

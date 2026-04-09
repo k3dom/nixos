@@ -39,6 +39,16 @@ in {
         (gitDir + "nixbox")
       ];
     };
+    includes = [
+      {
+        condition = "gitdir:/home/${user}/Public/Git/progono/mono/";
+        contents.wt = {
+          basedir = ".git/wt";
+          hook = "pnpm i";
+          copy = [".env" ".env*.local"];
+        };
+      }
+    ];
     settings = {
       user = {
         name = "kedom";
