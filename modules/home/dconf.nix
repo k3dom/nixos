@@ -28,6 +28,7 @@
         num-workspaces = 4;
         focus-mode = "sloppy";
       };
+      "org/gnome/desktop/notifications".banner-timeout = 3;
       "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
       "org/gnome/shell/extensions/paperwm/keybindings" = {
         switch-next = ["<Super>k"];
