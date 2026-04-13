@@ -24,6 +24,7 @@
     tokei
     texliveFull
     postgresql
+    libnotify
     inetutils
     dnsutils
     openssl
