@@ -15,6 +15,10 @@
       package = pkgs.llm-agents.claude-code;
     };
   };
+  xdg.configFile."opencode/opencode-notifier.json".text = builtins.toJSON {
+    sound = true;
+    notification = false;
+  };
   home.packages = with pkgs; [
     opencode-desktop
     llm-agents.ccusage
