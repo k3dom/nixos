@@ -14,6 +14,7 @@
     unzip
     p7zip
     yq
+    xclip
     sqlite
     lsof
     ffmpeg
