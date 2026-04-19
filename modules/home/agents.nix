@@ -5,8 +5,10 @@
       package = pkgs.llm-agents.opencode;
       settings = {
         plugin = [
+          # https://github.com/mohak34/opencode-notifier
           "@mohak34/opencode-notifier@0.2.2"
-          "opencode-claude-auth@1.4.9"
+          # https://github.com/griffinmartin/opencode-claude-auth
+          "opencode-claude-auth@1.5.0"
         ];
       };
     };
