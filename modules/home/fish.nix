@@ -21,7 +21,7 @@
         abbr -a kn  "kubens"
         abbr -a kc  "kubectx"
         abbr -a oc  "opencode"
-        abbr -a cc  "claude"
+        abbr -a cc  "CLAUDE_CODE_NO_FLICKER=1 claude --dangerously-skip-permissions"
         abbr -a g   "git"
         abbr -a gwt "git-wt-fzf"
       '';
