@@ -11,6 +11,8 @@
           "opencode-claude-auth@1.5.0"
           # https://github.com/slkiser/opencode-quota
           "@slkiser/opencode-quota@3.1.3"
+          # https://github.com/Tarquinen/oc-tps
+          "oc-tps@0.0.6"
         ];
       };
     };
