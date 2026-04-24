@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvim = {
-      url = "github:kedom1337/nvim";
+      url = "github:k3dom/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {

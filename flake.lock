@@ -352,15 +352,15 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1777021305,
-        "narHash": "sha256-aMfG3wcZPFwPIhzdZUBfEBvznpX5IebNoZ4LqkLJe3M=",
-        "owner": "kedom1337",
+        "lastModified": 1777023852,
+        "narHash": "sha256-kcwOs1wTo0xoTqWUEd6fhaZ2qswoauXtcrHKbFj4LvA=",
+        "owner": "k3dom",
         "repo": "nvim",
-        "rev": "6e3a38a7af86d50c98ad4626e7ef98d4b53acca2",
+        "rev": "2241e39ce7f64c6138bfc84944824b7b3043d765",
         "type": "github"
       },
       "original": {
-        "owner": "kedom1337",
+        "owner": "k3dom",
         "repo": "nvim",
         "type": "github"
       }
