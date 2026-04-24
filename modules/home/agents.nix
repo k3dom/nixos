@@ -4,6 +4,8 @@
       enable = true;
       package = pkgs.llm-agents.opencode;
       settings = {
+        share = "disabled";
+        autoupdate = false;
         plugin = [
           # https://github.com/mohak34/opencode-notifier
           "@mohak34/opencode-notifier@0.2.3"
@@ -18,7 +20,7 @@
     };
     claude-code = {
       enable = true;
-      package = pkgs.llm-agents.claude-code;
+      package = pkgs.llm-agents.claude-code.override { disableTelemetry = true; };
     };
   };
   xdg.configFile."opencode/opencode-notifier.json".text = builtins.toJSON {
