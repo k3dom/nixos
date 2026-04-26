@@ -51,6 +51,7 @@
     yaak
     meld
     drawing
+    dsnote
     zoom-us
     teams-for-linux
     android-studio

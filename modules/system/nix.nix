@@ -51,6 +51,16 @@
   nixpkgs.overlays = [
     inputs.llm-agents.overlays.default
     (final: prev: {
+      dsnote = prev.callPackage ../../pkgs/dsnote/package.nix {
+        rhvoice = prev.rhvoice.overrideAttrs (oldAttrs: {
+          postPatch =
+            (oldAttrs.postPatch or "")
+            + ''
+              sed -i '/#include "audio.hpp"/i #include <cstdint>' src/audio/playback_stream_impl.hpp
+            '';
+        });
+      };
+
       git-wt = prev.buildGoModule rec {
         pname = "git-wt";
         version = "0.27.0";
