@@ -8,6 +8,8 @@
   ninja,
   pkg-config,
   python3,
+  ctranslate2,
+  whisperCpp,
   fmt,
   openblas,
   mbrola,
@@ -16,7 +18,7 @@
   onnxruntime,
   pcaudiolib,
   spdlog,
-  python312Packages,
+  python3Packages,
   rhvoice,
   qt5,
   libsForQt5,
@@ -44,8 +46,61 @@
   xdotool,
   wayland,
   wayland-protocols,
+  withNvidia ? false,
 }: let
   dsnote_commit_hash = "a48334317e0aeada3e8146e426f8a876a9b1e25b";
+
+  whisperCppCuda = whisperCpp.override {cudaSupport = true;};
+  whisperCppVulkan = whisperCpp.override {vulkanSupport = true;};
+
+  ctranslate2Cuda = python3Packages.ctranslate2.override {
+    ctranslate2-cpp = ctranslate2.override {
+      withCUDA = true;
+      withCuDNN = true;
+    };
+  };
+
+  ctranslate2Runtime =
+    if withNvidia
+    then ctranslate2Cuda
+    else python3Packages.ctranslate2;
+
+  fasterWhisperRuntime = python3Packages.faster-whisper.override {
+    ctranslate2 = ctranslate2Runtime;
+  };
+
+  dsnotePython = python3.withPackages (ps:
+    [
+      ctranslate2Runtime
+      fasterWhisperRuntime
+      ps.accelerate
+      ps.gruut
+      ps.kokoro
+      ps.mecab-python3
+      ps.misaki
+      ps.phonemizer
+      ps.torch
+      ps.torchaudio
+      ps.transformers
+      ps.unidic-lite
+    ]
+    ++ ps.gruut.optional-dependencies.de
+    ++ ps.gruut.optional-dependencies.es
+    ++ ps.gruut.optional-dependencies.fa
+    ++ ps.gruut.optional-dependencies.fr
+    ++ ps.gruut.optional-dependencies.it
+    ++ ps.gruut.optional-dependencies.nl
+    ++ ps.gruut.optional-dependencies.ru
+    ++ ps.gruut.optional-dependencies.sw);
+
+  runtimeLibs =
+    [
+      whisperCpp
+      whisperCppVulkan
+    ]
+    ++ lib.optionals withNvidia [
+      whisperCppCuda
+    ];
 
   aprilasr = stdenv.mkDerivation {
     pname = "aprilasr";
@@ -594,7 +649,7 @@ in
       piper
       sam
       ssplitcpp
-      python312Packages.pybind11
+      python3Packages.pybind11
       rnnoise-nu
       rhvoice
       qt5.qtbase
@@ -671,6 +726,29 @@ in
       substituteInPlace cmake/openblas_pkgconfig.cmake \
         --replace-quiet 'pkg_search_module(openblas REQUIRED openblas)' 'pkg_search_module(openblas REQUIRED blas)'
     '';
+
+    postInstall = ''
+      mkdir -p $out/lib
+      ln -s ${lib.getLib whisperCpp}/lib/libwhisper.so $out/lib/libwhisper-openblas.so
+      ${lib.optionalString withNvidia ''
+        ln -s ${lib.getLib whisperCppCuda}/lib/libwhisper.so $out/lib/libwhisper-cublas.so
+      ''}
+      ln -s ${lib.getLib whisperCppVulkan}/lib/libwhisper.so $out/lib/libwhisper-vulkan.so
+    '';
+
+    qtWrapperArgs = [
+      "--prefix"
+      "PYTHONPATH"
+      ":"
+      "${dsnotePython}/${python3.sitePackages}"
+      "--prefix"
+      "LD_LIBRARY_PATH"
+      ":"
+      "${lib.makeLibraryPath runtimeLibs}:$out/lib:/run/opengl-driver/lib"
+      "--set"
+      "PYTORCH_TENSOREXPR"
+      "0"
+    ];
 
     meta = {
       description = "Speech recognition and text-to-speech application. Note taking, reading and translating with offline Speech to Text, Text to Speech and Machine Translation";

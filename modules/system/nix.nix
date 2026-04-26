@@ -50,8 +50,9 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     inputs.llm-agents.overlays.default
-    (final: prev: {
-      dsnote = prev.callPackage ../../pkgs/dsnote/package.nix {
+    (final: prev: let
+      dsnoteArgs = {
+        whisperCpp = prev.whisper-cpp;
         rhvoice = prev.rhvoice.overrideAttrs (oldAttrs: {
           postPatch =
             (oldAttrs.postPatch or "")
@@ -60,6 +61,9 @@
             '';
         });
       };
+    in {
+      dsnote = prev.callPackage ../../pkgs/dsnote/package.nix dsnoteArgs;
+      dsnoteWithNvidia = prev.callPackage ../../pkgs/dsnote/package.nix (dsnoteArgs // {withNvidia = true;});
 
       git-wt = prev.buildGoModule rec {
         pname = "git-wt";
