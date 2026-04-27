@@ -6,6 +6,7 @@
       settings = {
         share = "disabled";
         autoupdate = false;
+        lsp = false;
         plugin = [
           # https://github.com/mohak34/opencode-notifier
           "@mohak34/opencode-notifier@0.2.3"
