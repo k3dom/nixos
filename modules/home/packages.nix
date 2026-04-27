@@ -1,5 +1,4 @@
 {
-  hostName,
   inputs,
   pkgs,
   system,
@@ -52,11 +51,11 @@
     yaak
     meld
     drawing
-    (
-      if hostName == "desktop"
-      then dsnoteWithNvidia
-      else dsnote
-    )
+    # (
+    #   if hostName == "desktop"
+    #   then dsnoteWithNvidia
+    #   else dsnote
+    # )
     zoom-us
     teams-for-linux
     android-studio

@@ -6,14 +6,11 @@
       settings = {
         share = "disabled";
         autoupdate = false;
-        experimental.quotaToast.enableToast = true;
         plugin = [
           # https://github.com/mohak34/opencode-notifier
           "@mohak34/opencode-notifier@0.2.3"
           # https://github.com/griffinmartin/opencode-claude-auth
           "opencode-claude-auth@1.5.0"
-          # https://github.com/slkiser/opencode-quota
-          "@slkiser/opencode-quota@3.1.3"
         ];
       };
     };
